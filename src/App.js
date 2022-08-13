@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./globalStyle";
 import Hero from "./components/Hero";
 import Products from "./components/Products";
-import { productData, productDataTwo } from "./components/Products/data";
+import { productData } from "./components/Products/data";
+import { productDataTwo } from "./components/Menu/data";
 import Feature from "./components/Feature";
 import Footer from "./components/Footer";
+import Menu from "./components/Menu";
 
 function App() {
   return (
-    <Router className="App">
+    <Router basename={process.env.PUBLIC_URL} className="App">
       <GlobalStyle />
       <Routes>
         <Route exact path="/" element={<Hero />} />
@@ -21,19 +23,12 @@ function App() {
         <Route exact path="/" element={<Feature />} />
         <Route
           exact
-          path="/"
-          element={
-            <Products heading="Sweet treats for you" data={productDataTwo} />
-          }
+          path="/menu"
+          element={<Menu heading="Menu" data={productDataTwo} />}
         />
       </Routes>
       <Footer />
     </Router>
-    // <Router>
-    //   <Routes>
-    //     <Route exact path="/" element={<Home />} />
-    //   </Routes>
-    // </Router>
   );
 }
 

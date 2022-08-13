@@ -1,3 +1,4 @@
+import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 import ImgBg from "../../images/foodBackground.jpg";
 
@@ -46,7 +47,7 @@ export const HeroP = styled.p`
   margin-bottom: 2rem;
 `;
 
-export const HeroBtn = styled.button`
+export const HeroBtn = styled(Link)`
   font-size: 1.4rem;
   padding: 1rem 4rem;
   border: none;

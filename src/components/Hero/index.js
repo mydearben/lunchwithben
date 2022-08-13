@@ -25,7 +25,7 @@ const Hero = () => {
         <HeroItems>
           <HeroH1>Nasi Lemak Botak</HeroH1>
           <HeroP>is for lunch today !</HeroP>
-          <HeroBtn>Place Order</HeroBtn>
+          <HeroBtn to="/menu">Place Order</HeroBtn>
         </HeroItems>
       </HeroContent>
     </HeroContainer>

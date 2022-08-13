@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useCallback } from "react";
-import { useSpring, animated } from "react-spring";
 import {
   Background,
   ModalWrapper,
@@ -14,14 +13,6 @@ import {
 
 export const Modal = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
-
-  const animation = useSpring({
-    config: {
-      duration: 250,
-    },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(0%)` : `translateY(-100%)`,
-  });
 
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
