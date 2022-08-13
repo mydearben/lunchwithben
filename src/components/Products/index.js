@@ -30,7 +30,7 @@ const Products = ({ heading, data }) => {
 
   return (
     <>
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal showModal={showModal} setShowModal={setShowModal} isOrder={true} />
       <ProductsContainer>
         <ProductsHeading>
           <Navbar toggle={toggle} heading={heading} />

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
+import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 
 export const Background = styled.div`
   width: 100%;
@@ -97,4 +98,26 @@ export const ModalTotal = styled.p`
   border-color: gray;
   border-style: dashed;
   border-width: 2px 0px 2px 0px;
+`;
+
+export const PlusButton = styled(FaPlusCircle)`
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 25px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const MinusButton = styled(FaMinusCircle)`
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 25px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

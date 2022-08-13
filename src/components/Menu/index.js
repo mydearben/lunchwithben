@@ -30,7 +30,11 @@ const Menu = ({ heading, data }) => {
 
   return (
     <>
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        isOrder={false}
+      />
       <MenuContainer>
         <MenuHeading>
           <Navbar toggle={toggle} heading={heading} />
