@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+import Select from "react-select";
 
 export const Background = styled.div`
   width: 100%;
@@ -65,6 +66,12 @@ export const CancelButton = styled.button`
     cursor: pointer;
     color: #000;
   }
+
+  &:disabled {
+    opacity: 0.65;
+    background: #000;
+    transition: 0s;
+  }
 `;
 
 export const ModalDetails = styled.div`
@@ -120,4 +127,10 @@ export const MinusButton = styled(FaMinusCircle)`
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const NameList = styled(Select)`
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 `;

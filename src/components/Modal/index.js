@@ -11,10 +11,21 @@ import {
   CancelButton,
   PlusButton,
   MinusButton,
+  NameList,
 } from "./ModalElements";
+
+const options = [
+  { value: "ooi", label: "Ooi" },
+  { value: "keywei", label: "Key Wei" },
+  { value: "glenn", label: "Glenn" },
+  { value: "selvyn", label: "Selvyn" },
+  { value: "benny", label: "Benny" },
+  { value: "benjamin", label: "Benjamin" },
+];
 
 export const Modal = ({ showModal, setShowModal, isOrder }) => {
   const [amount, setAmount] = useState(0);
+  const [name, setName] = useState("");
 
   const addAmount = () => {
     setAmount(amount + 1);
@@ -26,11 +37,19 @@ export const Modal = ({ showModal, setShowModal, isOrder }) => {
     }
   };
 
+  const handleNameChange = (selectedName) => {
+    console.log("handleNameChange", selectedName);
+    setName(selectedName.value);
+    console.log("name", name);
+  };
+
   const modalRef = useRef();
 
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
+      setName("");
+      setAmount(0);
     }
   };
 
@@ -39,6 +58,8 @@ export const Modal = ({ showModal, setShowModal, isOrder }) => {
       if (e.key === "Escape" && showModal) {
         setShowModal(false);
         console.log("I pressed");
+        setName("");
+        setAmount(0);
       }
     },
     [setShowModal, showModal]
@@ -70,7 +91,11 @@ export const Modal = ({ showModal, setShowModal, isOrder }) => {
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"
-                onClick={() => setShowModal((prev) => !prev)}
+                onClick={() => {
+                  setShowModal((prev) => !prev);
+                  setName("");
+                  setAmount(0);
+                }}
               />
             </ModalWrapper>
           </Background>
@@ -90,6 +115,14 @@ export const Modal = ({ showModal, setShowModal, isOrder }) => {
                 />
                 <ModalHeader>Order</ModalHeader>
                 <ModalDetails>
+                  <p>Name:</p>
+                  <NameList
+                    options={options}
+                    onChange={handleNameChange}
+                    maxMenuHeight={250}
+                  />
+                </ModalDetails>
+                <ModalDetails>
                   <p>Chicken Rice</p>
                   <p>RM 6.50</p>
                 </ModalDetails>
@@ -99,12 +132,23 @@ export const Modal = ({ showModal, setShowModal, isOrder }) => {
                   <p>{amount}</p>
                   <PlusButton onClick={addAmount}>+</PlusButton>
                 </ModalDetails>
-                <ModalTotal>Total: RM 6.50</ModalTotal>
-                <CancelButton>Place Order</CancelButton>
+                <ModalTotal>
+                  Total: RM{" "}
+                  {Number(
+                    Math.round(parseFloat(amount * 6.5 + "e" + 2)) + "e-" + 2
+                  ).toFixed(2)}
+                </ModalTotal>
+                <CancelButton disabled={name === "" || parseInt(amount) <= 0}>
+                  Place Order
+                </CancelButton>
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"
-                onClick={() => setShowModal((prev) => !prev)}
+                onClick={() => {
+                  setShowModal((prev) => !prev);
+                  setName("");
+                  setAmount(0);
+                }}
               />
             </ModalWrapper>
           </Background>
