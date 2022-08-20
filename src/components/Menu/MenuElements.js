@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaShoppingCart } from "react-icons/fa";
 
 export const MenuContainer = styled.div`
   /* width: 100vw; */
@@ -69,6 +70,41 @@ export const MenuButton = styled.button`
 
   &:hover {
     background: #ffc500;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+    color: #000;
+  }
+`;
+
+export const CartContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+`;
+
+export const CartIcon = styled(FaShoppingCart)`
+  margin-right: 0.9rem;
+  font-size: 1.4rem;
+  vertical-align: middle;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const CartButton = styled.button`
+  font-size: 1.4rem;
+  padding: 1rem 4rem;
+  border: none;
+  background: #ffc500;
+  color: #000;
+  transition: 0.2s ease-out;
+  display: flex;
+
+  &:hover {
+    background: #5cd4f2;
     transition: 0.2s ease-out;
     cursor: pointer;
     color: #000;

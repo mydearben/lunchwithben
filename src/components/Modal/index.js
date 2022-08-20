@@ -13,6 +13,7 @@ import {
   MinusButton,
   NameList,
 } from "./ModalElements";
+import { SecondaryModal } from "../SecondaryModal";
 
 const options = [
   { value: "ooi", label: "Ooi" },
@@ -26,6 +27,11 @@ const options = [
 export const Modal = ({ showModal, setShowModal, isOrder }) => {
   const [amount, setAmount] = useState(0);
   const [name, setName] = useState("");
+  const [showSecondaryModal, setShowSecondaryModal] = useState(false);
+
+  const openSecondaryModal = () => {
+    setShowSecondaryModal((prev) => !prev);
+  };
 
   const addAmount = () => {
     setAmount(amount + 1);
@@ -57,7 +63,6 @@ export const Modal = ({ showModal, setShowModal, isOrder }) => {
     (e) => {
       if (e.key === "Escape" && showModal) {
         setShowModal(false);
-        console.log("I pressed");
         setName("");
         setAmount(0);
       }
@@ -73,6 +78,11 @@ export const Modal = ({ showModal, setShowModal, isOrder }) => {
   if (isOrder) {
     return (
       <>
+        <SecondaryModal
+          showSecondaryModal={showSecondaryModal}
+          setShowSecondaryModal={setShowSecondaryModal}
+          closeParentModal={setShowModal}
+        />
         {showModal ? (
           <Background onClick={closeModal} ref={modalRef}>
             <ModalWrapper showModal={showModal}>
@@ -87,7 +97,9 @@ export const Modal = ({ showModal, setShowModal, isOrder }) => {
                   <p>RM 6.50</p>
                 </ModalDetails>
                 <ModalTotal>Total: RM 6.50</ModalTotal>
-                <CancelButton>Cancel Order</CancelButton>
+                <CancelButton onClick={openSecondaryModal}>
+                  Cancel Order
+                </CancelButton>
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"

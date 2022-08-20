@@ -12,6 +12,9 @@ import {
   MenuDesc,
   MenuPrice,
   MenuButton,
+  CartContainer,
+  CartButton,
+  CartIcon,
 } from "./MenuElements";
 import { Modal } from "../Modal";
 
@@ -56,6 +59,12 @@ const Menu = ({ heading, data }) => {
           })}
         </MenuWrapper>
       </MenuContainer>
+      <CartContainer>
+        <CartButton>
+          <CartIcon />
+          <p>View Cart</p>
+        </CartButton>
+      </CartContainer>
     </>
   );
 };
