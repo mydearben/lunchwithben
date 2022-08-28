@@ -41,7 +41,18 @@ const Hero = () => {
   }, []);
 
   if (!restaurant[0]) {
-    return null;
+    return (
+      <HeroContainer>
+        <Navbar toggle={toggle} heading="Lunch With Ben" />
+        <Sidebar isOpen={isOpen} toggle={toggle} />
+        <HeroContent>
+          <HeroItems>
+            <HeroH1>Sorry</HeroH1>
+            <HeroP>Lunch has not been decided yet..</HeroP>
+          </HeroItems>
+        </HeroContent>
+      </HeroContainer>
+    );
   } else {
     return (
       <HeroContainer>

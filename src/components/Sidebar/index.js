@@ -18,7 +18,7 @@ const Sidebar = ({ isOpen, toggle }) => {
       <SidebarMenu>
         <SidebarLink to="/">Home</SidebarLink>
         <SidebarLink to="/orders">View Today's Orders</SidebarLink>
-        <SidebarLink to="/">(Admin Only)</SidebarLink>
+        <SidebarLink to="/admin">(Admin Only)</SidebarLink>
       </SidebarMenu>
       <SideBtnWrap>
         <SidebarRoute to="/">Order Now</SidebarRoute>

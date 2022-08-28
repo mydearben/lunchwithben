@@ -98,26 +98,36 @@ const Products = ({ heading, data }) => {
             <Navbar toggle={toggle} heading={heading} />
             <Sidebar isOpen={isOpen} toggle={toggle} />
           </ProductsHeading>
-          <ProductWrapper>
-            {orders.map((product, index) => {
-              return (
-                <ProductCard key={index}>
-                  <ProductImg
-                    src={require("../../images/sampleAvatar.png")}
-                    alt={product}
-                  />
-                  <ProductInfo>
-                    <ProductTitle>{product.name}</ProductTitle>
-                    <ProductDesc>{printDescription(product.order)}</ProductDesc>
-                    <ProductPrice>{calculateTotal(product.order)}</ProductPrice>
-                    <ProductButton onClick={() => openModal(product)}>
-                      View Order
-                    </ProductButton>
-                  </ProductInfo>
-                </ProductCard>
-              );
-            })}
-          </ProductWrapper>
+          {orders.length > 0 ? (
+            <ProductWrapper>
+              {orders.map((product, index) => {
+                return (
+                  <ProductCard key={index}>
+                    <ProductImg
+                      src={require("../../images/sampleAvatar.png")}
+                      alt={product}
+                    />
+                    <ProductInfo>
+                      <ProductTitle>{product.name}</ProductTitle>
+                      <ProductDesc>
+                        {printDescription(product.order)}
+                      </ProductDesc>
+                      <ProductPrice>
+                        {calculateTotal(product.order)}
+                      </ProductPrice>
+                      <ProductButton onClick={() => openModal(product)}>
+                        View Order
+                      </ProductButton>
+                    </ProductInfo>
+                  </ProductCard>
+                );
+              })}
+            </ProductWrapper>
+          ) : (
+            <ProductWrapper>
+              <h1>No Orders Received Yet !</h1>
+            </ProductWrapper>
+          )}
         </ProductsContainer>
       </>
     );

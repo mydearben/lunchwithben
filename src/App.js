@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./globalStyle";
 import Hero from "./components/Hero";
 import Products from "./components/Products";
-import { productData } from "./components/Products/data";
-import Feature from "./components/Feature";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
+import Admin from "./components/Admin";
 
 function App() {
   return (
@@ -17,10 +16,10 @@ function App() {
         <Route
           exact
           path="/orders"
-          element={<Products heading="Today's Orders" data={productData} />}
+          element={<Products heading="Today's Orders" />}
         />
-        <Route exact path="/" element={<Feature />} />
         <Route exact path="/menu" element={<Menu heading="Menu" />} />
+        <Route exact path="/admin" element={<Admin heading="Admin" />} />
       </Routes>
       <Footer />
     </Router>
