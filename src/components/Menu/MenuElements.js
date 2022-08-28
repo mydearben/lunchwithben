@@ -109,4 +109,8 @@ export const CartButton = styled.button`
     cursor: pointer;
     color: #000;
   }
+
+  &:disabled {
+    background: gray;
+  }
 `;

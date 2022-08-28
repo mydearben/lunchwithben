@@ -4,7 +4,6 @@ import { GlobalStyle } from "./globalStyle";
 import Hero from "./components/Hero";
 import Products from "./components/Products";
 import { productData } from "./components/Products/data";
-import { productDataTwo } from "./components/Menu/data";
 import Feature from "./components/Feature";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
@@ -21,11 +20,7 @@ function App() {
           element={<Products heading="Today's Orders" data={productData} />}
         />
         <Route exact path="/" element={<Feature />} />
-        <Route
-          exact
-          path="/menu"
-          element={<Menu heading="Menu" data={productDataTwo} />}
-        />
+        <Route exact path="/menu" element={<Menu heading="Menu" />} />
       </Routes>
       <Footer />
     </Router>

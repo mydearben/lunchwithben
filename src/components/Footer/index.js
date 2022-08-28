@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaTwitter,
-  FaLinkedin,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import {
   FooterContainer,
   FooterWrap,
@@ -25,36 +19,14 @@ const Footer = () => {
             <SocialLogo to="/">Lunch With Ben</SocialLogo>
             <SocialIcons>
               <SocialIconLink
-                href="//www.facebook.com/"
+                href="https://github.com/leongjenn/lunchwithben"
                 target="_blank"
-                aria-label="Facebook"
+                aria-label="Github"
               >
-                <FaFacebook />
+                <FaGithub />
               </SocialIconLink>
               <SocialIconLink
-                href="//www.instagram.com/"
-                target="_blank"
-                aria-label="Instagram"
-              >
-                <FaInstagram />
-              </SocialIconLink>
-              <SocialIconLink
-                href="//www.youtube.com/"
-                target="_blank"
-                aria-label="Youtube"
-              >
-                <FaYoutube />
-              </SocialIconLink>
-              <SocialIconLink
-                href="//www.twitter.com/"
-                target="_blank"
-                aria-label="Twitter"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter />
-              </SocialIconLink>
-              <SocialIconLink
-                href="//www.linkedin.com/"
+                href="https://www.linkedin.com/in/benjamin-leong-e-jenn-6500731aa/"
                 target="_blank"
                 aria-label="Linkedin"
               >

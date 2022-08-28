@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+import { TiDelete } from "react-icons/ti";
 import Select from "react-select";
 
 export const Background = styled.div`
@@ -86,8 +87,8 @@ export const ModalDetails = styled.div`
 
   p {
     margin-bottom: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
   }
 `;
 
@@ -123,6 +124,16 @@ export const MinusButton = styled(FaMinusCircle)`
   margin-left: 1rem;
   margin-right: 1rem;
   font-size: 25px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const DeleteButton = styled(TiDelete)`
+  margin-bottom: 1rem;
+  font-size: 25px;
+  color: red;
 
   &:hover {
     cursor: pointer;
