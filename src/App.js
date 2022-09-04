@@ -9,7 +9,7 @@ import Admin from "./components/Admin";
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL} className="App">
+    <Router className="App">
       <GlobalStyle />
       <Routes>
         <Route exact path="/" element={<Hero />} />
