@@ -25,6 +25,8 @@ export const Modal = ({
   setCart,
   menuDetails,
   orderDetails,
+  toggleRefresh,
+  setToggleRefresh,
 }) => {
   const [users, setUsers] = useState([]);
   const [amount, setAmount] = useState(0);
@@ -179,6 +181,7 @@ export const Modal = ({
     firebase
       .firestore()
       .collection("users")
+      .orderBy("name")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -288,13 +291,18 @@ export const Modal = ({
             closeParentModal={setShowModal}
             secondaryModalType={modalType}
             idOfOrderToBeDeleted={orderDetails.id}
+            nameOfOrder={orderDetails.name}
+            toggleRefresh={toggleRefresh}
+            setToggleRefresh={setToggleRefresh}
           />
           {showModal ? (
             <Background onClick={closeModal} ref={modalRef}>
               <ModalWrapper showModal={showModal}>
                 <ModalContent>
                   <ModalImg
-                    src={require("../../images/sampleAvatar.png")}
+                    src={require("../../images/avatar/" +
+                      orderDetails.name.replace(/\s+/g, "").toLowerCase() +
+                      ".jpg")}
                     alt="camera"
                   />
                   <ModalHeader>Order</ModalHeader>

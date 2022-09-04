@@ -8,6 +8,7 @@ import {
   CoverHeader,
   RestaurantList,
   ConfirmButton,
+  StopButton,
 } from "./AdminElements";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
@@ -15,6 +16,7 @@ import firebase from "../../firebase";
 
 const PassphraseForm = ({ heading }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [shouldDisable, setShouldDisable] = useState(true);
   const [restaurants, setRestaurants] = useState([]);
   const [selectedRestaurant, setSelectedRestaurant] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +32,27 @@ const PassphraseForm = ({ heading }) => {
 
   const handleRestaurantChange = (restaurant) => {
     setSelectedRestaurant(restaurant);
+
+    if (restaurant.name !== "") {
+      setShouldDisable(false);
+    }
+  };
+
+  const disallowOrders = () => {
+    firebase
+      .firestore()
+      .collection("restaurants")
+      .where("lunchToday", "==", true)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          firebase
+            .firestore()
+            .collection("restaurants")
+            .doc(doc.id)
+            .update({ lunchToday: false });
+        });
+      });
   };
 
   const updateTodaysRestaurant = () => {
@@ -46,7 +69,13 @@ const PassphraseForm = ({ heading }) => {
         });
       })
       .then(() => {
-        if (previousRestaurantId !== selectedRestaurant.id) {
+        if (previousRestaurantId === "") {
+          firebase
+            .firestore()
+            .collection("restaurants")
+            .doc(selectedRestaurant.id)
+            .update({ lunchToday: true });
+        } else if (previousRestaurantId !== selectedRestaurant.id) {
           firebase
             .firestore()
             .collection("restaurants")
@@ -70,6 +99,7 @@ const PassphraseForm = ({ heading }) => {
     firebase
       .firestore()
       .collection("restaurants")
+      .orderBy("name")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -110,9 +140,13 @@ const PassphraseForm = ({ heading }) => {
                   : selectedRestaurant.name
               }
             />
-            <ConfirmButton onClick={updateTodaysRestaurant}>
+            <ConfirmButton
+              disabled={shouldDisable}
+              onClick={updateTodaysRestaurant}
+            >
               Confirm
             </ConfirmButton>
+            <StopButton onClick={disallowOrders}>Stop Orders</StopButton>
           </CoverDiv>
         </CoverContainer>
       </PageDiv>

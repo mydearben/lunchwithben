@@ -65,6 +65,26 @@ export const ConfirmButton = styled.button`
   font-size: 1rem;
   padding: 1rem 1rem;
   border: none;
+  background: #51db51;
+  color: #fff;
+  transition: 0.2 ease-out;
+
+  &:hover {
+    background: #ffc500;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+    color: #000;
+  }
+
+  &:disabled {
+    background: gray;
+  }
+`;
+
+export const StopButton = styled.button`
+  font-size: 1rem;
+  padding: 1rem 1rem;
+  border: none;
   background: #e31837;
   color: #fff;
   transition: 0.2 ease-out;

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import {
   Background,
   ModalWrapper,
@@ -19,6 +19,9 @@ export const SecondaryModal = ({
   resetCart,
   orderToBePlaced,
   idOfOrderToBeDeleted,
+  nameOfOrder,
+  toggleRefresh,
+  setToggleRefresh,
 }) => {
   const modalRef = useRef();
 
@@ -38,7 +41,7 @@ export const SecondaryModal = ({
         setShowSecondaryModal(false);
         closeParentModal(false);
       })
-      .then(window.location.reload());
+      .then(setToggleRefresh(!toggleRefresh));
   };
 
   const confirmOrder = (e) => {
@@ -150,7 +153,7 @@ export const SecondaryModal = ({
             <Background>
               <ModalWrapper showSecondaryModal={showSecondaryModal}>
                 <ModalContent>
-                  <ModalHeader>Cancel Benjamin's Order ?</ModalHeader>
+                  <ModalHeader>Cancel {nameOfOrder}'s Order ?</ModalHeader>
                   <ModalDetails>
                     <YesButton
                       onClick={() => cancelOrder(idOfOrderToBeDeleted)}

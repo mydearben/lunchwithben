@@ -55,6 +55,7 @@ const Menu = ({ heading }) => {
       .collection("restaurants")
       .doc(restaurantId)
       .collection("menu")
+      .orderBy("foodName")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -88,7 +89,9 @@ const Menu = ({ heading }) => {
               return (
                 <MenuCard key={index}>
                   <MenuImg
-                    src={require("../../images/sampleAvatar.png")}
+                    src={require("../../images/restaurants/" +
+                      product.foodName.replace(/\s+/g, "").toLowerCase() +
+                      ".png")}
                     alt={product.foodName}
                   />
                   <MenuInfo>
