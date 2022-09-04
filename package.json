@@ -1,7 +1,7 @@
 {
   "name": "lunch-with-ben",
   "version": "0.1.0",
-  "homepage": "https://leongjenn.github.io/lunchwithben/",
+  "homepage": "https://leongjenn.github.io/lunchwithben/#",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

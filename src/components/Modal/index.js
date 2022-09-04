@@ -212,7 +212,9 @@ export const Modal = ({
               <ModalWrapper showModal={showModal}>
                 <ModalContent>
                   <ModalImg
-                    src={require("../../images/sampleAvatar.png")}
+                    src={require("../../images/restaurants/" +
+                      menuDetails.foodName.replace(/\s+/g, "").toLowerCase() +
+                      ".png")}
                     alt="camera"
                   />
                   <ModalHeader>Order</ModalHeader>
