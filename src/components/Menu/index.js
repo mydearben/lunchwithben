@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
@@ -16,6 +16,8 @@ import {
   CartContainer,
   CartButton,
   CartIcon,
+  ScrollToBottomContainer,
+  ScrollToBottomIcon,
 } from "./MenuElements";
 import { Modal } from "../Modal";
 import firebase from "../../firebase";
@@ -32,6 +34,15 @@ const Menu = ({ heading }) => {
   // For this, we would need to use the useLocation() hook
   const location = useLocation();
   const restaurantId = location.state;
+
+  const cartRef = useRef(null);
+
+  const scrollToSection = (elementRef) => {
+    window.scrollTo({
+      top: elementRef.current.offsetTop,
+      behavior: "smooth",
+    });
+  };
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -78,6 +89,12 @@ const Menu = ({ heading }) => {
         setCart={setCart}
         menuDetails={menuDetails}
       />
+      <ScrollToBottomContainer
+        ref={cartRef}
+        onClick={() => scrollToSection(cartRef)}
+      >
+        <ScrollToBottomIcon />
+      </ScrollToBottomContainer>
       <MenuContainer>
         <MenuHeading>
           <Navbar toggle={toggle} heading={heading} />
@@ -114,7 +131,7 @@ const Menu = ({ heading }) => {
             })}
         </MenuWrapper>
       </MenuContainer>
-      <CartContainer>
+      <CartContainer ref={cartRef}>
         <CartButton disabled={cart.length <= 0} onClick={() => openModal(2)}>
           <CartIcon />
           <p>View Cart</p>

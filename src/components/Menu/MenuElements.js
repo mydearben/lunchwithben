@@ -114,3 +114,23 @@ export const CartButton = styled.button`
     background: gray;
   }
 `;
+
+export const ScrollToBottomContainer = styled.div`
+  position: fixed;
+  bottom: 10%;
+  left: 85%;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: #ffc500;
+  z-index: 1;
+`;
+
+export const ScrollToBottomIcon = styled(FaShoppingCart)`
+  width: 40%;
+  height: 40%;
+  color: #000;
+  margin-top: 15px;
+  margin-left: 15px;
+  animation: scrollTop 0.5s alternate ease infinite;
+`;
