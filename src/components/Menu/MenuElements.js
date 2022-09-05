@@ -117,8 +117,8 @@ export const CartButton = styled.button`
 
 export const ScrollToBottomContainer = styled.div`
   position: fixed;
-  bottom: 10%;
-  left: 85%;
+  bottom: 5%;
+  right: 5%;
   width: 50px;
   height: 50px;
   border-radius: 100%;
