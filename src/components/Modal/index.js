@@ -13,6 +13,7 @@ import {
   MinusButton,
   DeleteButton,
   NameList,
+  TypeList,
 } from "./ModalElements";
 import { SecondaryModal } from "../SecondaryModal";
 import firebase from "../../firebase";
@@ -27,10 +28,14 @@ export const Modal = ({
   orderDetails,
   toggleRefresh,
   setToggleRefresh,
+  restaurantId,
 }) => {
   const [users, setUsers] = useState([]);
   const [amount, setAmount] = useState(0);
   const [name, setName] = useState("");
+  const [type, setType] = useState(
+    restaurantId === "tfuBsEgrmzZqtayHrQoF" ? "" : "NA"
+  );
   const [showSecondaryModal, setShowSecondaryModal] = useState(false);
 
   const modalRef = useRef();
@@ -46,13 +51,17 @@ export const Modal = ({
     const index = cart.findIndex((x) => x.id === menuDetails.id);
 
     if (index === -1) {
+      console.log(type);
       // Food ordered doesn't exist in the array, we can add the new order directly into the "cart" state
       setCart([
         ...cart,
         {
           id: menuDetails.id,
           name: name,
-          foodName: menuDetails.foodName,
+          foodName:
+            restaurantId === "tfuBsEgrmzZqtayHrQoF"
+              ? menuDetails.foodName + " (" + type.value + ")"
+              : menuDetails.foodName,
           price: menuDetails.price,
           amount: amount,
         },
@@ -64,7 +73,10 @@ export const Modal = ({
       clonedCart[index] = {
         id: menuDetails.id,
         name: name,
-        foodName: menuDetails.foodName,
+        foodName:
+          restaurantId === "tfuBsEgrmzZqtayHrQoF"
+            ? menuDetails.foodName + " (" + type.value + ")"
+            : menuDetails.foodName,
         price: menuDetails.price,
         amount: parseFloat(clonedCart[index].amount) + amount,
       };
@@ -111,6 +123,10 @@ export const Modal = ({
     setName(selectedName.name);
   };
 
+  const handleTypeChange = (selectedType) => {
+    setType(selectedType);
+  };
+
   const calculateTotalPriceOfCart = () => {
     var totalPrice = 0;
 
@@ -153,6 +169,7 @@ export const Modal = ({
     if (modalRef.current === e.target) {
       setShowModal(false);
       setAmount(0);
+      setType("");
 
       if (modalType !== 1 && cart.length <= 0) {
         setName("");
@@ -165,6 +182,7 @@ export const Modal = ({
       if (e.key === "Escape" && showModal) {
         setShowModal(false);
         setAmount(0);
+        setType("");
 
         if (cart.length <= 0) {
           setName("");
@@ -233,6 +251,22 @@ export const Modal = ({
                   <ModalDetails>
                     <p>Food: {menuDetails.foodName}</p>
                   </ModalDetails>
+                  {restaurantId === "tfuBsEgrmzZqtayHrQoF" ? (
+                    <ModalDetails>
+                      <p>Type:</p>
+                      <TypeList
+                        options={menuDetails.type.map((menuType) => {
+                          return {
+                            value: menuType,
+                            label: menuType,
+                          };
+                        })}
+                        onChange={handleTypeChange}
+                        maxMenuHeight={250}
+                        placeholder={type === "" ? "Select..." : type}
+                      />
+                    </ModalDetails>
+                  ) : null}
                   <ModalDetails>
                     <p>
                       Price: RM{" "}
@@ -260,7 +294,9 @@ export const Modal = ({
                     ).toFixed(2)}
                   </ModalTotal>
                   <CancelButton
-                    disabled={name === "" || parseInt(amount) <= 0}
+                    disabled={
+                      name === "" || parseInt(amount) <= 0 || type === ""
+                    }
                     onClick={addToCart}
                   >
                     Place Order
@@ -271,6 +307,7 @@ export const Modal = ({
                   onClick={() => {
                     setShowModal((prev) => !prev);
                     setAmount(0);
+                    setType("");
 
                     if (cart.length <= 0) {
                       setName("");
@@ -420,6 +457,7 @@ export const Modal = ({
                   onClick={() => {
                     setShowModal((prev) => !prev);
                     setAmount(0);
+                    setType("");
 
                     if (cart.length <= 0) {
                       setName("");

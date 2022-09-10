@@ -88,6 +88,7 @@ const Menu = ({ heading }) => {
         cart={cart}
         setCart={setCart}
         menuDetails={menuDetails}
+        restaurantId={restaurantId}
       />
       <ScrollToBottomContainer
         ref={cartRef}

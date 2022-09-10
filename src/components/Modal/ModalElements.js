@@ -16,7 +16,7 @@ export const Background = styled.div`
 
 export const ModalWrapper = styled.div`
   width: 300px;
-  height: 500px;
+  height: 600px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -141,6 +141,12 @@ export const DeleteButton = styled(TiDelete)`
 `;
 
 export const NameList = styled(Select)`
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+`;
+
+export const TypeList = styled(Select)`
   margin-bottom: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;

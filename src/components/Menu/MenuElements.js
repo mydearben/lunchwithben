@@ -19,6 +19,8 @@ export const MenuCard = styled.div`
   margin: 0 2.5rem 2.5rem 2.5rem;
   line-height: 2;
   width: 250px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const MenuImg = styled.img`
@@ -39,6 +41,7 @@ export const MenuInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-grow: 1;
   align-items: center;
   padding: 1.5rem;
   text-align: center;
