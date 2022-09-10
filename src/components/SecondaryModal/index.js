@@ -50,7 +50,7 @@ export const SecondaryModal = ({
       .firestore()
       .collection("orders")
       .where("name", "==", orderToBePlaced[0].name)
-      // .where("date", "==", someDate)
+      .where("date", "==", moment().format("LL"))
       .get()
       .then((querySnapshot) => {
         if (!querySnapshot.empty) {
