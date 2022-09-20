@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaClipboardList, FaIdCard } from "react-icons/fa";
 
 export const ProductsContainer = styled.div`
   /* width: 100vw; */
@@ -18,6 +19,11 @@ export const ProductCard = styled.div`
   margin: 0 2.5rem 2.5rem 2.5rem;
   line-height: 2;
   width: 250px;
+`;
+
+export const GroupedCard = styled.div`
+  margin: 0 2.5rem 2.5rem 2.5rem;
+  line-height: 3;
 `;
 
 export const ProductImg = styled.img`
@@ -49,6 +55,12 @@ export const ProductTitle = styled.h2`
   box-shadow: 0px 5px #e9ba23;
 `;
 
+export const GroupedTitle = styled.h2`
+  font-weight: 400;
+  font-size: 1.5rem;
+  box-shadow: 0px 5px #e9ba23;
+`;
+
 export const ProductDesc = styled.p`
   margin-bottom: 1rem;
   border-top: 20px solid transparent;
@@ -73,4 +85,61 @@ export const ProductButton = styled.button`
     cursor: pointer;
     color: #000;
   }
+`;
+
+export const GroupOrdersContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+`;
+
+export const GroupOrdersIcon = styled(FaClipboardList)`
+  margin-right: 0.9rem;
+  font-size: 1.4rem;
+  vertical-align: middle;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const CardIcon = styled(FaIdCard)`
+  margin-right: 0.9rem;
+  font-size: 1.4rem;
+  vertical-align: middle;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const GroupOrdersButton = styled.button`
+  font-size: 1.4rem;
+  margin-top: 3.5rem;
+  padding: 1rem 2.5rem;
+  border: none;
+  background: #ffc500;
+  color: #000;
+  transition: 0.2s ease-out;
+  display: flex;
+
+  &:hover {
+    background: #5cd4f2;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+    color: #000;
+  }
+
+  &:disabled {
+    background: gray;
+  }
+`;
+
+export const PageDiv = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
 `;
