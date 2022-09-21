@@ -19,6 +19,8 @@ import {
   PageDiv,
   GroupedCard,
   GroupedTitle,
+  ScrollToBottomContainer,
+  ScrollToBottomIcon,
 } from "./ProductsElements";
 import { Modal } from "../Modal";
 import firebase from "../../firebase";
@@ -44,6 +46,13 @@ const Products = ({ heading }) => {
   const openModal = (selectedMenu) => {
     setSelectedOrder(selectedMenu);
     setShowModal((prev) => !prev);
+  };
+
+  const scrollToSection = (elementRef) => {
+    window.scrollTo({
+      top: elementRef.current.offsetTop,
+      behavior: "smooth",
+    });
   };
 
   const printDescription = (orderDetails) => {
@@ -157,6 +166,12 @@ const Products = ({ heading }) => {
     if (showGrouped) {
       return (
         <>
+          <ScrollToBottomContainer
+            ref={groupOrdersRef}
+            onClick={() => scrollToSection(groupOrdersRef)}
+          >
+            <ScrollToBottomIcon />
+          </ScrollToBottomContainer>
           <ProductsContainer>
             <ProductsHeading>
               <Navbar toggle={toggle} heading={heading} />
@@ -198,6 +213,12 @@ const Products = ({ heading }) => {
             toggleRefresh={toggleRefresh}
             setToggleRefresh={setToggleRefresh}
           />
+          <ScrollToBottomContainer
+            ref={groupOrdersRef}
+            onClick={() => scrollToSection(groupOrdersRef)}
+          >
+            <ScrollToBottomIcon />
+          </ScrollToBottomContainer>
           <ProductsContainer>
             <ProductsHeading>
               <Navbar toggle={toggle} heading={heading} />

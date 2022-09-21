@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FaClipboardList, FaIdCard } from "react-icons/fa";
+import { FaClipboardList, FaIdCard, FaAngleDown } from "react-icons/fa";
 
 export const ProductsContainer = styled.div`
   /* width: 100vw; */
@@ -142,4 +142,24 @@ export const PageDiv = styled.div`
   align-items: center;
   flex-direction: column;
   margin-bottom: 2.5rem;
+`;
+
+export const ScrollToBottomContainer = styled.div`
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: #ffc500;
+  z-index: 1;
+`;
+
+export const ScrollToBottomIcon = styled(FaAngleDown)`
+  width: 40%;
+  height: 40%;
+  color: #000;
+  margin-top: 15px;
+  margin-left: 15px;
+  animation: scrollTop 0.5s alternate ease infinite;
 `;
