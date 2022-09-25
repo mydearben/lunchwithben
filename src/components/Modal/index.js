@@ -51,7 +51,6 @@ export const Modal = ({
     const index = cart.findIndex((x) => x.id === menuDetails.id);
 
     if (index === -1) {
-      console.log(type);
       // Food ordered doesn't exist in the array, we can add the new order directly into the "cart" state
       setCart([
         ...cart,
@@ -60,7 +59,7 @@ export const Modal = ({
           name: name,
           foodName:
             restaurantId === "tfuBsEgrmzZqtayHrQoF"
-              ? menuDetails.foodName + " (" + type.value + ")"
+              ? menuDetails.foodName + " (" + type + ")"
               : menuDetails.foodName,
           price: menuDetails.price,
           amount: amount,
@@ -75,7 +74,7 @@ export const Modal = ({
         name: name,
         foodName:
           restaurantId === "tfuBsEgrmzZqtayHrQoF"
-            ? menuDetails.foodName + " (" + type.value + ")"
+            ? menuDetails.foodName + " (" + type + ")"
             : menuDetails.foodName,
         price: menuDetails.price,
         amount: parseFloat(clonedCart[index].amount) + amount,
@@ -124,7 +123,7 @@ export const Modal = ({
   };
 
   const handleTypeChange = (selectedType) => {
-    setType(selectedType);
+    setType(selectedType.value);
   };
 
   const calculateTotalPriceOfCart = () => {
