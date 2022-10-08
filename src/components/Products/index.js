@@ -103,7 +103,11 @@ const Products = ({ heading }) => {
       });
     });
 
-    return tempGroupByOrders;
+    const tempGroupByOrdersSorted = tempGroupByOrders.sort((a, b) =>
+      a.foodName.localeCompare(b.foodName)
+    );
+
+    return tempGroupByOrdersSorted;
   };
 
   // Upon loading the page for the first time, fetch all of the orders
