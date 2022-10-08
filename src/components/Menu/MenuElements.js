@@ -84,7 +84,7 @@ export const CartContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: #150f0f;
 `;
 
 export const CartIcon = styled(FaShoppingCart)`
