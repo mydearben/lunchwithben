@@ -19,7 +19,7 @@ const Footer = () => {
             <SocialLogo to="/">Lunch With Ben</SocialLogo>
             <SocialIcons>
               <SocialIconLink
-                href="https://github.com/leongjenn/lunchwithben"
+                href="https://github.com/mydearben"
                 target="_blank"
                 aria-label="Github"
               >
